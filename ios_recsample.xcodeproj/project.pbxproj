@@ -14,6 +14,7 @@
 		EA6E6D8A1D3A3B4C00027A69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6E6D881D3A3B4C00027A69 /* LaunchScreen.storyboard */; };
 		EA6E6D951D3A3B4C00027A69 /* ios_recsampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E6D941D3A3B4C00027A69 /* ios_recsampleTests.swift */; };
 		EA6E6DA01D3A3B4C00027A69 /* ios_recsampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E6D9F1D3A3B4C00027A69 /* ios_recsampleUITests.swift */; };
+		EADB0D751D3A41B400EA5092 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADB0D741D3A41B400EA5092 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		EA6E6D9B1D3A3B4C00027A69 /* ios_recsampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ios_recsampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6E6D9F1D3A3B4C00027A69 /* ios_recsampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_recsampleUITests.swift; sourceTree = "<group>"; };
 		EA6E6DA11D3A3B4C00027A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EADB0D741D3A41B400EA5092 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EADB0D751D3A41B400EA5092 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +80,7 @@
 		EA6E6D731D3A3B4C00027A69 = {
 			isa = PBXGroup;
 			children = (
+				EADB0D741D3A41B400EA5092 /* AVFoundation.framework */,
 				EA6E6D7E1D3A3B4C00027A69 /* ios_recsample */,
 				EA6E6D931D3A3B4C00027A69 /* ios_recsampleTests */,
 				EA6E6D9E1D3A3B4C00027A69 /* ios_recsampleUITests */,
@@ -193,6 +197,7 @@
 				TargetAttributes = {
 					EA6E6D7B1D3A3B4C00027A69 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 3ZMTZ3U33V;
 					};
 					EA6E6D8F1D3A3B4C00027A69 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -399,10 +404,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios_recsample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.kz56cd.ios-recsample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +418,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios_recsample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.kz56cd.ios-recsample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -482,6 +493,7 @@
 				EA6E6DA61D3A3B4C00027A69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA6E6DA71D3A3B4C00027A69 /* Build configuration list for PBXNativeTarget "ios_recsampleTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +502,7 @@
 				EA6E6DA91D3A3B4C00027A69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA6E6DAA1D3A3B4C00027A69 /* Build configuration list for PBXNativeTarget "ios_recsampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +511,7 @@
 				EA6E6DAC1D3A3B4C00027A69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
