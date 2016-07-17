@@ -12,12 +12,12 @@ import AVFoundation
 class ViewController: UIViewController {
 
     @IBOutlet weak var recBtn: UIButton!
+    
     var audioRecorder: AVAudioRecorder?
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         initRecording()
         setupAudioRecorder()
@@ -33,13 +33,25 @@ class ViewController: UIViewController {
     
     @IBAction func recBtnTapped(sender: UIButton) {
         print("do rec..")
-        
         audioRecorder?.record()
     }
     
+    @IBAction func recStopBtnTapped(sender: UIButton) {
+        print("stop rec..")
+        audioRecorder?.stop()
+    }
+
+    @IBAction func startBtnTapped(sender: UIButton) {
+        playRecFile()
+    }
+    
+    @IBAction func stopBtnTapped(sender: UIButton) {
+        stopRecFile()
+    }
+    
+    
     
     // MARK: private func
-    
     
     private func initRecording() {
         let session = AVAudioSession.sharedInstance()
@@ -59,25 +71,26 @@ class ViewController: UIViewController {
     
     private func setupAudioRecorder() {
         
-        // 録音用URLを設定
-        let dirURL = documentsDirectoryURL()
-        print("dirURL : \(dirURL.absoluteString)")
-        
-        let fileName = "recording.caf"
-        let recordingsURL = dirURL.URLByAppendingPathComponent(fileName)
-        
+        let recURL = getRecURL()
         // 録音設定
         let recordSettings: [String: AnyObject] =
             [AVEncoderAudioQualityKey: AVAudioQuality.Min.rawValue,
              AVEncoderBitRateKey: 16,
              AVNumberOfChannelsKey: 2,
              AVSampleRateKey: 44100.0]
-        
         do {
-            audioRecorder = try AVAudioRecorder(URL: recordingsURL, settings: recordSettings)
+            audioRecorder = try AVAudioRecorder(URL: recURL, settings: recordSettings)
         } catch {
             audioRecorder = nil
         }
+    }
+    
+    private func getRecURL() -> NSURL {
+        // 録音用URLを設定
+        let dirURL = documentsDirectoryURL()
+        print("dirURL : \(dirURL.absoluteString)")
+        let fileName = "recording.caf"
+        return dirURL.URLByAppendingPathComponent(fileName)
     }
     
     // DocumentsのURLを取得
@@ -89,6 +102,28 @@ class ViewController: UIViewController {
             fatalError("URLs for directory are empty.")
         }
         return urls[0]
+    }
+    
+    private func playRecFile() {
+        do {
+            let recURL = getRecURL()
+            audioPlayer = try AVAudioPlayer(contentsOfURL: recURL)
+            if let audioPlayer = audioPlayer {
+                audioPlayer.prepareToPlay()
+            }
+        } catch {
+            print("Error")
+        }
+        
+        if let audioPlayer = audioPlayer {
+            audioPlayer.play()
+        }
+    }
+    
+    private func stopRecFile() {
+        if ((audioPlayer?.playing) != nil) {
+            audioPlayer?.stop()
+        }
     }
 }
 
